@@ -1,0 +1,31 @@
+a {
+    color: #2c07e2;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #fa05cd;
+    text-decoration: none;
+  }
+
+.employee-card {
+    margin: 1em;
+    max-width: 300px;
+    width: 100%;
+    color: white;
+    display: flex;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    border: none;
+  }
+
+  .manager-card {
+    background-color: #c4697d;
+  }
+  
+  .engineer-card {
+    background-color: #2a729e;
+  }
+  
+  .intern-card {
+    background-color: #58c16d;
+  }

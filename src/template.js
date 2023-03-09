@@ -1,22 +1,21 @@
 module.exports = team => {
     return `<!DOCTYPE html>
     <html lang="en">
-    
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+            <link rel="stylesheet" href="./dist/styles.css">
         <title>Your Team Profile</title>
     </head>
-    
     <body>
     <header class="border border-primary bg-primary py-5 text-center">
        <h1 class="fs-1 text-light">The Team to Out-Team All the Teams</h1> 
     </header>
     <main>
-        <div class="container">
+        <div class="container my-5">
             <div class="row">
                 <div class=" col-12 d-flex justify-content-center">
                     ${generateProfiles(team)}
@@ -25,18 +24,15 @@ module.exports = team => {
       </div>
     </body>
     </main>
-    
-    
     </html>`
 }
 
 const generateProfiles = team => {
-
     const generateManager = manager => {
         return `<div class="card employee-card manager-card">
         <div class="card-header text-center">
             <h2 class="card-title">${manager.getName()}</h2>
-            <h4 class="card-title">Title: ${manager.getRole()}</h4>
+            <h4 class="card-title">${manager.getRole()}</h4>
         </div>
         <div class="card-body bg-light">
             <ul class="list-group text-dark">
@@ -47,12 +43,11 @@ const generateProfiles = team => {
         </div>
     </div>`;
     };
-
     const generateEngineer = engineer => {
         return `<div class="card employee-card engineer-card">
         <div class="card-header text-center">
             <h2 class="card-title">${engineer.getName()}</h2>
-            <h4 class="card-title">Title: ${engineer.getRole()}</h4>
+            <h4 class="card-title">${engineer.getRole()}</h4>
         </div>
         <div class="card-body bg-light">
             <ul class="list-group text-dark">
@@ -63,12 +58,11 @@ const generateProfiles = team => {
         </div>
     </div>`;
     };
-
     const generateIntern = intern => {
         return `<div class="card employee-card intern-card">
         <div class="card-header text-center">
             <h2 class="card-title">${intern.getName()}</h2>
-            <h4 class="card-title">Title: ${intern.getRole()}</h4>
+            <h4 class="card-title">${intern.getRole()}</h4>
         </div>
         <div class="card-body bg-light">
             <ul class="list-group text-dark">
@@ -79,7 +73,6 @@ const generateProfiles = team => {
         </div>
     </div>`
     };
-
     const htmlPage = [];
 
     htmlPage.push(team.filter(employee => employee.getRole() === "Manager").map(manager => generateManager(manager)));
