@@ -1,20 +1,30 @@
+//Dependencies
 const inquirer = require('inquirer');
 const jest = require('jest');
 const path = require('path');
 const fs = require('fs');
 
+//Import class constructor files
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+//Pathway and location variables
 const dist_dir = path.resolve(__dirname, 'dist');
 const output = path.join(dist_dir, 'index.html');
+const render = require('./src/template.js');
 
+//Empty array to be built up
 const teamArray = [];
 const idArray = [];
 
+
+
+
+//Run program
 function init() {
+    //Immediately run createManager function upon startup
     function createManager() {
         console.log('Start building up your team!');
         inquirer.prompt([
@@ -208,12 +218,12 @@ function init() {
     };
 
     function generateHTML() {
-        if(!fs.existsSync(dist_dir)) {
+        if (!fs.existsSync(dist_dir)) {
             fs.mkdirSync(dist_dir)
         }
         console.log("Get excited! Your profile is being created!");
         fs.writeFileSync(output, render(teamArray), "utf-8");
-    }
+    };
 
     createManager();
 };
