@@ -8,6 +8,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+const dist_dir = path.resolve(__dirname, 'dist');
+const output = path.join(dist_dir, 'index.html');
+
 const teamArray = [];
 const idArray = [];
 
@@ -66,11 +69,11 @@ function init() {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
             teamArray.push(manager);
             idArray.push(answers.managerId);
-            addNewMember();
+            createNewMember();
         });
     };
 
-    function addNewMember() {
+    function createNewMember() {
         inquirer.prompt([
             {
                 type: "list",
@@ -85,10 +88,10 @@ function init() {
         ]).then(chosenMember => {
             switch (chosenMember.memberType) {
                 case "Engineer":
-                    addEngineer();
+                    createEngineer();
                     break;
                 case "Intern":
-                    addIntern();
+                    createIntern();
                     break;
                 default:
                     generateHTML();
@@ -96,14 +99,14 @@ function init() {
         });
     };
 
-    function addEngineer() {
+    function createEngineer() {
         inquirer.prompt([
             {
                 type: "input",
                 name: "engineerName",
                 message: "What's your engineer's name?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true;
                     }
                     return "Your Engineer must have a name!";
@@ -114,7 +117,7 @@ function init() {
                 name: "engineerId",
                 message: "What's your engineer's ID?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true;
                     }
                     return "Engineer's gotta have an ID!";
@@ -125,7 +128,7 @@ function init() {
                 name: "engineerEmail",
                 message: "What's your engineer's email?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true
                     }
                     return "Your engineer should have an email address!";
@@ -146,18 +149,18 @@ function init() {
             const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
             teamArray.push(engineer);
             idArray.push(answers.engineerId);
-            addNewMember();
+            createNewMember();
         });
     };
 
-    function addIntern() {
+    function createIntern() {
         inquirer.prompt([
             {
                 type: "input",
                 name: "internName",
                 message: "What's your intern's name?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true;
                     }
                     return "Your Intern should really have a name!";
@@ -168,7 +171,7 @@ function init() {
                 name: "internId",
                 message: "What's your intern's ID?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true;
                     }
                     return "You should really think about giving your intern an ID!";
@@ -179,7 +182,7 @@ function init() {
                 name: "internEmail",
                 message: "What's your intern's email?",
                 validate: answer => {
-                    if(answer !== '') {
+                    if (answer !== '') {
                         return true
                     }
                     return "Your intern's gotta have an email!";
@@ -200,10 +203,19 @@ function init() {
             const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
             teamArray.push(intern);
             idArray.push(answers.internId);
-            addNewMember();
+            createNewMember();
         });
     };
 
-    function
+    function generateHTML() {
+        if(!fs.existsSync(dist_dir)) {
+            fs.mkdirSync(dist_dir)
+        }
+        console.log("Get excited! Your profile is being created!");
+        fs.writeFileSync(output, render(teamArray), "utf-8");
+    }
 
-}
+    createManager();
+};
+
+init();
