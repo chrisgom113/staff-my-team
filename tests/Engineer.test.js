@@ -19,7 +19,7 @@ describe("Engineer", () => {
         });
     });
     describe("methods", () => {
-        it("should return the github usernmae when using getGithub", () => {
+        it("should return the github username when using getGithub", () => {
             //Arrange
             newEngName = "Jesus";
             newEngId = "001"
@@ -28,7 +28,7 @@ describe("Engineer", () => {
             //Act
             const newEng = new Engineer(newEngName, newEngId, newEngEmail, newEngGithub);
             //Assert
-            expect(newEng.github).toBe(newEngGithub);
+            expect(newEng.getGithub()).toBe(newEngGithub);
         });
         it("should return the role as Engineer when using getRole", () => {
             //Arrange & Act
