@@ -16,7 +16,7 @@ describe("Employee", () => {
         });
     });
     describe("methods", () => {
-        it("should display the role as 'Employee' when using getRole", () => {
+        it("should return the role as 'Employee' when using getRole", () => {
             //Arrange & Act
             const employee = new Employee('JSmith', '8675309', 'jon@smith.com');
             //Assert
