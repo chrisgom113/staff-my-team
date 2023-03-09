@@ -7,7 +7,7 @@ https://github.com/chrisgom113/staff-my-team
 ```
 Link to walkthrough video:
 ``` 
-TO-DO
+https://drive.google.com/file/d/1asnIahywhXR5KmbPlOLegbBMUDpIrVIQ/view
 ```
 
 # Description
@@ -40,9 +40,9 @@ Jest
 
 # Usage
 
-This walkthrough video demonstrates the functionality in real-time: TO-DO
+- - **This walkthrough video demonstrates the functionality in real-time: https://drive.google.com/file/d/1asnIahywhXR5KmbPlOLegbBMUDpIrVIQ/view**
 
-The below description and screenshots also demonstrate some of the program's back-end coding.
+**The below description and screenshots also demonstrate some of the program's back-end coding.**
 
 ## User is able to run jest testing to observe that all class coding passes tests.
 
@@ -64,7 +64,7 @@ The below description and screenshots also demonstrate some of the program's bac
 
 ![]()
 
- 
+# Tests
  
 # License
 
